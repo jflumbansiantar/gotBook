@@ -1,23 +1,23 @@
 {
   "development": {
-    "username": "postgres",
-    "password": "Idjoel3007",
-    "database": "got_book",
+    "username": "root",
+    "password": "",
+    "database": "gotBook",
     "host": "127.0.0.1",
-    "dialect": "postgres"
+    "dialect": "mysql"
   },
   "test": {
-    "username": "postgres",
-    "password": "Idjoel3007",
-    "database": "database_test",
+    "username": "root",
+    "password": "",
+    "database": "gotBook",
     "host": "127.0.0.1",
-    "dialect": "postgres"
+    "dialect": "mysql"
   },
   "production": {
-    "username": "postgres",
-    "password": "Idjoel3007",
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
+    "username": "bcd79496132a0d",
+    "password": "faafcd33",
+    "database": "heroku_f5c74c776fce1d1",
+    "host": "us-cdbr-east-02.cleardb.com",
+    "dialect": "mysql"
   }
 }

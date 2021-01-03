@@ -58,11 +58,11 @@ class GenreController {
             } else {
                 let updated = await genres.update(
                     req.body,
-                    {where: { id }}
+                    { where: { id } }
                 )
                 res.status(200).json({
                     status: true,
-                    message:'Genre updated.',
+                    message: 'Genre updated.',
                     data: updated,
                 })
 
@@ -93,16 +93,49 @@ class GenreController {
     }
     static async findGenre(req, res, next) {
         const id = req.params.id;
-        
-        try {
 
+        try {
+            let foundGenre = await genres.findOne({
+                id: id,
+            });
+            if (!foundGenre) {
+                res.status(400).json({
+                    status: 'Failed',
+                    message: 'Genre not found.'
+                })
+            } else {
+                res.status(200).json({
+                    status: true,
+                    message: 'Genre found.',
+                    data: foundGenre
+                })
+            }
         } catch (error) {
             next(error);
         }
     }
     static async searchGenre(req, res, next) {
+        const { search } = req.body;
         try {
-
+            const found = await genres.findAll({
+                where: {
+                    genre: {
+                        [Op.like]: '%' + search + '%'
+                    }
+                }
+            });
+            if (!found) {
+                res.status(400).json({
+                    status: 'Failed',
+                    message: 'Genre not found.'
+                })
+            } else {
+                res.status(200).json({
+                    status: true,
+                    message: 'Genres found.',
+                    data: found
+                })
+            }
         } catch (error) {
             next(error);
         }

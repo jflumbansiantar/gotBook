@@ -26,9 +26,9 @@ const authentication = (req, res, next) => {
 const authorization = (req, res, next) => {
   console.log("Authorization works!");
 
-  let role = req.usersData.role;
+  let email = req.usersData.email;
 
-  if (role === "Admin") {
+  if (email === process.env.ADMIN_EMAIL) {
     next();
   } else {
     res.status(400).json({
