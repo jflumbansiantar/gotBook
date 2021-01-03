@@ -14,7 +14,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   genres.init({
-    genre: DataTypes.STRING
+    genre: DataTypes.STRING,
+    description: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'genres',
