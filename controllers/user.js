@@ -2,10 +2,9 @@ const { users } = require("../models");
 const { decryptPwd } = require('../helpers/bcrypt')
 const { tokenGenerator } = require('../helpers/jwt')
 
-
 class usersController {
 	static async register(req, res) {
-		const { name, email, password, role } = req.body;
+		const { name, email, password} = req.body;
 		try {
 			const found = await users.findOne({
 				where: {

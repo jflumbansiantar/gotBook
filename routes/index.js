@@ -1,8 +1,8 @@
 const { Router } = require('express');
 const routes = Router;
-const userRoute = require('./users');
-const booksRoute = require('./books');
-const genresRoute = require('./genres');
+const userRoute = require('./user');
+const booksRoute = require('./book');
+const genresRoute = require('./genre');
 
 routes.get('/', (req, res)=> {
     res.status(200).json({

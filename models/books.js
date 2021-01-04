@@ -11,14 +11,51 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      books.belongsToMany(models.genre);
     }
   };
   books.init({
-    title: DataTypes.STRING,
-    author: DataTypes.STRING,
-    year: DataTypes.INTEGER,
-    pages: DataTypes.INTEGER,
-    description: DataTypes.TEXT
+    title: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          message: 'Please enter a title.'
+        }
+      }
+    },
+    author: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          message: 'Please enter the author.'
+        }
+      }
+    },
+    year: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: {
+          message: 'Please enter the year.'
+        }
+      }
+    },
+    pages: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          message: 'Please enter the amount of pages in the books.'
+        }
+      }
+    },
+    description: {
+      type: DataTypes.TEXT,
+      validate: {
+        notEmpty: {
+          message: 'Please enter the description.'
+        }
+      }
+    },
+    genreId: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'books',

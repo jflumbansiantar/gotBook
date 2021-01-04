@@ -11,11 +11,26 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      genre.hasMany(models.books)
     }
   };
   genres.init({
-    genre: DataTypes.STRING,
-    description: DataTypes.STRING,
+    genre: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          message: 'Please enter a genre name.'
+        }
+      }
+    },
+    description: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          message: 'Please enter the description.'
+        }
+      }
+    },
   }, {
     sequelize,
     modelName: 'genres',
